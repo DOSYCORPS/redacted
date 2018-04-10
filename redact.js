@@ -7,7 +7,11 @@
     if ( text.parentElement.tagName !== 'SCRIPT' && text.parentElement.tagName !== 'STYLE' ) {
       actions.push( () => redact( text, forbidden )); 
     }
-  }; actions.forEach( a => a() );
+  }; 
+  
+  actions.forEach( a => a() );
+  const overlay = document.querySelector('rdctdoverlay');
+  overlay.remove();
   
   function redact( t, e ) {
     const p = t.parentElement;
@@ -25,5 +29,4 @@
     t.replaceWith( ...converted );
     p.normalize();
   }
-  
 }
