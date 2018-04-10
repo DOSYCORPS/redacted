@@ -1,6 +1,7 @@
 "use strict";
 {
-  chrome.storage.sync.get('redacted', ({redacted: redacted = new Set([])}) => {
+  chrome.storage.sync.get('redacted', ({redacted: redacted = []}) => {
+    redacted = new Set(redacted);
     process(redacted);
     const overlay = document.querySelector('rdctdoverlay');
     if ( !!overlay ) {
