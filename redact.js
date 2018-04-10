@@ -3,6 +3,7 @@
   chrome.storage.sync.get('redacted', ({redacted: redacted = []}) => {
     redacted = new Set(redacted);
     process(redacted);
+    setTimeout( () => process(redacted), 5000 );
     const overlay = document.querySelector('rdctdoverlay');
     if ( !!overlay ) {
       overlay.remove();
@@ -12,7 +13,7 @@
     document.addEventListener('scroll', () => {
       if ( document.scrollingElement.scrollHeight > scrollHeight ) {
         scrollHeight = document.scrollingElement.scrollHeight;
-        process();
+        process(redacted);
       }
     });
   });
