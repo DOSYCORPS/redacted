@@ -13,6 +13,7 @@
     background-color: black;
     font-family: monospace;
     font-size: 125pt;
+    line-height: 125pt;
     z-index: 12000000;
     display: block;
   `;
