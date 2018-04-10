@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+  "version": "1.0.0",
+  "name": "Redacted",
+  "short_name": "rdctd",
+  "description": "Censor your own internet feed. Calm your mind by preventing wrongthink triggers.",
+  "author": "The Dosyago Corporation",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["hide.js"],
+      "match_about_blank": true,
+      "all_frames": true,
+      "run_at": "document_start"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["redact.js"],
+      "match_about_blank": true,
+      "all_frames": true
+    }
+  ],
+  "browser_action": {
+    "default_title": "Redacted Settings",
+    "default_popup": "popup.html"
+  }
+}
