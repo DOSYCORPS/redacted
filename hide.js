@@ -10,7 +10,7 @@
     bottom: 0;
     width: 100vw;
     height: 100vh;
-    background-color: black;
+    background-color: white;
     font-family: monospace;
     font-size: 125pt;
     line-height: 125pt;
