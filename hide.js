@@ -3,13 +3,13 @@
   const overlay = document.createElement("rdctdoverlay");
   overlay.style = `
     color: white;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     width: 100vw;
-    height: 100%;
+    height: 10vh;
     background-color: black;
     font-family: monospace;
     font-size: 125pt;
