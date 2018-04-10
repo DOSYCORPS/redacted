@@ -1,22 +1,22 @@
 "use strict";
 {
-  const forbidden = new Set(["Facebook", "Zuckerberg", "Trump", "alt-left", "Syria", "Trump's", "racist", "liberal", "alt-right"]);
-  
-  process();
-  const overlay = document.querySelector('rdctdoverlay');
-  if ( !!overlay ) {
-    overlay.remove();
-  }
-
-  let scrollHeight = document.scrollingElement.scrollHeight;
-  document.addEventListener('scroll', () => {
-    if ( document.scrollingElement.scrollHeight > scrollHeight ) {
-      scrollHeight = document.scrollingElement.scrollHeight;
-      process();
+  chrome.storage.sync.get('redacted', ({redacted}) => {
+    process(redacted);
+    const overlay = document.querySelector('rdctdoverlay');
+    if ( !!overlay ) {
+      overlay.remove();
     }
+
+    let scrollHeight = document.scrollingElement.scrollHeight;
+    document.addEventListener('scroll', () => {
+      if ( document.scrollingElement.scrollHeight > scrollHeight ) {
+        scrollHeight = document.scrollingElement.scrollHeight;
+        process();
+      }
+    });
   });
   
-  function process() {
+  function process( forbidden ) {
     const tw = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT); const actions = [];
     while( tw.nextNode() ) {
       const text = tw.currentNode;
