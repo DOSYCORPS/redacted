@@ -9,7 +9,7 @@
     right: 0;
     bottom: 0;
     width: 100vw;
-    height: 10vh;
+    height: 100vh;
     background-color: black;
     font-family: monospace;
     font-size: 125pt;
