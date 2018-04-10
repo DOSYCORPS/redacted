@@ -4,7 +4,9 @@
   
   process();
   const overlay = document.querySelector('rdctdoverlay');
-  overlay.remove();
+  if ( !!overlay ) {
+    overlay.remove();
+  }
 
   let scrollHeight = document.scrollingElement.scrollHeight;
   document.addEventListener('scroll', () => {
@@ -15,7 +17,7 @@
   });
   
   function process() {
-    const tw = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); const actions = [];
+    const tw = document.createTreeWalker(document.documentElement, NodeFilter.SHOW_TEXT); const actions = [];
     while( tw.nextNode() ) {
       const text = tw.currentNode;
       if ( text.parentElement.tagName !== 'SCRIPT' && text.parentElement.tagName !== 'STYLE' ) {
